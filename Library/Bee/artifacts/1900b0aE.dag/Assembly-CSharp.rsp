@@ -357,6 +357,7 @@
 "Assets/Scripts/Inventory.cs"
 "Assets/Scripts/ItemThrowing.cs"
 "Assets/Scripts/Movement.cs"
+"Assets/Scripts/ThrowingProjectile.cs"
 -langversion:9.0
 
 /deterministic
