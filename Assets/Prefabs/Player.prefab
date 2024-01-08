@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 7223540091010476945}
   - component: {fileID: 7049594348482600884}
   - component: {fileID: 4184341660755002402}
-  - component: {fileID: 554887039882217394}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,25 +153,3 @@ MonoBehaviour:
   rotationSpeed: 190
   aimRoationSpeed: 3
   planeCollider: {fileID: 0}
---- !u!114 &554887039882217394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6045887233942331564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3532ff9486d06294fa5866de19f84d12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPoint: {fileID: 8258879207262504821}
-  objectToThrow: {fileID: 0}
-  throwMarker: {fileID: 0}
-  totalThrows: 666666
-  throwCooldown: 0.1
-  planeCollider: {fileID: 0}
-  offset: 1
-  throwKey: 324
-  throwForce: 1
-  throwUpwardForce: 5

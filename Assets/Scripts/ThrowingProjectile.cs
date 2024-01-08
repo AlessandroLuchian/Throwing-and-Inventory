@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -11,6 +10,9 @@ public class ThrowingProjectile : MonoBehaviour
     [SerializeField] LineRenderer _Line;
     [SerializeField] float _Step;
     [SerializeField] Transform _FirePoint;
+    [SerializeField] float maxFiringDistance;
+    [SerializeField] GameObject circlePrefab;
+    private GameObject circleInstance;
     private Camera _cam;
 
     private void Start() {
@@ -31,7 +33,10 @@ public class ThrowingProjectile : MonoBehaviour
             float time;
             CalculatePathWithHeight(targetPos, height,out v0,out angle,out time);
             drawPath(groundDirection.normalized ,v0 , angle, time, _Step);
-            if (Input.GetKeyDown(KeyCode.Mouse1)){
+            drawCircleOnMouse();
+            // chiki briki
+            float distance = Vector3.Distance(_FirePoint.position, hit.point);
+            if (Input.GetKeyDown(KeyCode.E)&& distance<maxFiringDistance){
                 StopAllCoroutines();
                 StartCoroutine(Coroutine_Movement(groundDirection.normalized ,v0 ,angle ,time));
             }
@@ -95,6 +100,45 @@ public class ThrowingProjectile : MonoBehaviour
             transform.position =_FirePoint.position + direction * x + Vector3.up * y;
             t += Time.deltaTime;
             yield return null;
+        }
+    }
+
+    void drawCircleOnMouse(){
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (circleInstance == null)
+            {
+                circleInstance = Instantiate(circlePrefab, hit.point, Quaternion.identity);
+            }
+            else
+            {
+                circleInstance.transform.position = new Vector3(hit.point.x, 0.11f, hit.point.z);
+            }
+
+            float distance = Vector3.Distance(_FirePoint.position, hit.point);
+            Renderer circleRenderer = circleInstance.GetComponent<Renderer>();
+
+            if (circleRenderer != null)
+            {
+                if (distance > maxFiringDistance)
+                {
+                    circleRenderer.material.color = Color.red;
+                }
+                else
+                {
+                    circleRenderer.material.color = Color.green;
+                }
+            }
+        }
+        else
+        {
+            if (circleInstance != null)
+            {
+                Destroy(circleInstance);
+            }
         }
     }
 }
