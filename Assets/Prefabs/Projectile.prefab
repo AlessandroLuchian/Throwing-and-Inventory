@@ -147,11 +147,9 @@ GameObject:
   - component: {fileID: 8917255053290621252}
   - component: {fileID: 945039882404935679}
   - component: {fileID: 7046841837512828868}
-  - component: {fileID: 2814134584636896815}
   - component: {fileID: 1916494427393311628}
-  - component: {fileID: 5813948805188750869}
   m_Layer: 7
-  m_Name: Item
+  m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,7 +163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3617005924642951425}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.19, y: 0.39, z: 0}
   m_LocalScale: {x: 0.31943658, y: 0.3196722, z: 0.3086517}
   m_ConstrainProportionsScale: 0
@@ -223,27 +221,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2814134584636896815
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3617005924642951425}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1916494427393311628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,16 +238,5 @@ MonoBehaviour:
   _Line: {fileID: 6798597829156844502}
   _Step: 0.1
   _FirePoint: {fileID: 0}
---- !u!114 &5813948805188750869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3617005924642951425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc65e626f545e4a4bb8b270da6f3e7d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  maxFiringDistance: 8.5
   circlePrefab: {fileID: 0}
