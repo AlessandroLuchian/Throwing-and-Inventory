@@ -364,6 +364,8 @@
 "Assets/Scripts/Item-Scripts/InventoryItemData.cs"
 "Assets/Scripts/Item-Scripts/ItemPickUp.cs"
 "Assets/Scripts/Movement.cs"
+"Assets/Scripts/Tavik Scripts/shootingBehaviour.cs"
+"Assets/Scripts/Tavik Scripts/target.cs"
 "Assets/Scripts/ThrowingProjectile.cs"
 "Assets/Scripts/UI Scripts/InventoryDisplay.cs"
 "Assets/Scripts/UI Scripts/InventorySlot_UI.cs"
