@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 [System.Serializable]
@@ -23,6 +24,16 @@ public class InventorySlot
     public void ClearSlot(){
         itemData = null;
         stackSize = -1;
+    }
+
+    public void AssignItem(InventorySlot invSlot){
+        if(itemData == invSlot.itemData)
+            AddToStack(invSlot.StackSize);
+        else{
+            itemData = invSlot.itemData;
+            stackSize = 0;
+            AddToStack(invSlot.stackSize);
+        }
     }
     
     public void UdpateInventorySlot(InventoryItemData data, int amount){
@@ -48,6 +59,19 @@ public class InventorySlot
 
         public void RemoveFromStack(int amount){
         stackSize -= amount;
+    }
+
+        public bool SplitStack(out InventorySlot splitStack){
+        if(stackSize <= 1){
+            splitStack = null;
+            return false;
+        }
+
+        int halfStack = Mathf.RoundToInt(stackSize / 2);
+        RemoveFromStack(halfStack);
+
+        splitStack = new InventorySlot(itemData, halfStack);
+        return true;
     }
 
 }

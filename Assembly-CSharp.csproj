@@ -65,15 +65,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI Scripts\StaticInventoryDisplay.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\DynamicInventoryDisplay.cs" />
     <Compile Include="Assets\Scripts\Inventory-Scripts\InventorySlot.cs" />
-    <Compile Include="Assets\Scripts\ThrowingProjectile.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IInteractable.cs" />
     <Compile Include="Assets\Scripts\Tavik Scripts\shootingBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Movement.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\Interactor.cs" />
     <Compile Include="Assets\Scripts\Inventory-Scripts\MouseItemData.cs" />
     <Compile Include="Assets\Scripts\Tavik Scripts\target.cs" />
+    <Compile Include="Assets\Scripts\Movement and Throwing\Movement.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\InventoryUIControllerr.cs" />
+    <Compile Include="Assets\Scripts\Movement and Throwing\ThrowingProjectile.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\InventorySlot_UI.cs" />
     <Compile Include="Assets\Scripts\Item-Scripts\InventoryItemData.cs" />
     <Compile Include="Assets\Scripts\Item-Scripts\ItemPickUp.cs" />
+    <Compile Include="Assets\Scripts\Inventory-Scripts\ChestInventory.cs" />
     <Compile Include="Assets\Scripts\Inventory-Scripts\InventoryHolder.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\InventoryDisplay.cs" />
     <Compile Include="Assets\Scripts\Inventory-Scripts\InventorySistem.cs" />
