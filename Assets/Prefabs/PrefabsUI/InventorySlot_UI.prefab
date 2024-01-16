@@ -210,8 +210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8890ed914396d43b472a19434d8c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 0}
-  itemCount: {fileID: 0}
+  itemSprite: {fileID: 5952002787434769622}
+  itemCount: {fileID: 8750199153498485711}
   assignedInventorySlot:
     itemData: {fileID: 0}
     stackSize: -1
@@ -249,7 +249,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -43.4, y: 12.3}
+  m_AnchoredPosition: {x: -0.000041962, y: -31.7}
   m_SizeDelta: {x: 87.764, y: 40.402}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1142979453144399299

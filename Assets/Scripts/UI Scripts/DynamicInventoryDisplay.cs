@@ -15,13 +15,13 @@ public class DynamicInventoryDisplay : InventoryDisplay
     public void RefreshDynamicInventory(InventorySistem invToDisplay){
         ClearSlot();
         inventorySistem = invToDisplay;
+        if(inventorySistem != null)
+            inventorySistem.OnInventorySlotChanged += UpdateSlot;
         AssingSlot(invToDisplay);
     }
 
     public override void AssingSlot(InventorySistem invToDisplay)
     {
-        ClearSlot();
-
         slotDictionary = new Dictionary<InventorySlot_UI, InventorySlot>();
 
         if(invToDisplay == null)
@@ -42,5 +42,9 @@ public class DynamicInventoryDisplay : InventoryDisplay
 
         if(slotDictionary != null)
             slotDictionary.Clear();
+    }
+    private void OnDisable() {
+        if(inventorySistem != null)
+            inventorySistem.OnInventorySlotChanged -= UpdateSlot;
     }
 }

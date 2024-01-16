@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Interfaces\IInteractable.cs" />
     <Compile Include="Assets\Scripts\Tavik Scripts\shootingBehaviour.cs" />
     <Compile Include="Assets\Scripts\Interfaces\Interactor.cs" />
+    <Compile Include="Assets\Scripts\Inventory-Scripts\PlayerInventoryHolder.cs" />
     <Compile Include="Assets\Scripts\Inventory-Scripts\MouseItemData.cs" />
     <Compile Include="Assets\Scripts\Tavik Scripts\target.cs" />
     <Compile Include="Assets\Scripts\Movement and Throwing\Movement.cs" />

@@ -36,7 +36,7 @@ public class ThrowingProjectile : MonoBehaviour
             drawCircleOnMouse();
             // chiki briki
             float distance = Vector3.Distance(_FirePoint.position, hit.point);
-            if (Input.GetKeyDown(KeyCode.E)&& distance<maxFiringDistance){
+            if (Input.GetKeyDown(KeyCode.Q)&& distance<maxFiringDistance){
                 StopAllCoroutines();
                 StartCoroutine(Coroutine_Movement(groundDirection.normalized ,v0 ,angle ,time));
             }

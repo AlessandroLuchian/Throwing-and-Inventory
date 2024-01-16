@@ -8,7 +8,7 @@ public class ChestInventory : InventoryHolder, IInteractable
     public UnityAction<IInteractable> OnInteractionComplete {get; set; }
 
     public void Interact(Interactor interactor, out bool interactSuccessful){
-        OnDynamicInventoryDisplayRequested?.Invoke(inventorySistem);
+        OnDynamicInventoryDisplayRequested?.Invoke(primaryInventorySistem);
         interactSuccessful = true;
     }
     public void EndInteraction(){
