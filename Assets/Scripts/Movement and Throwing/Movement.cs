@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class playerMovement : MonoBehaviour
 {
     private Rigidbody rb; 
+    private Transform playerTransform;
     [SerializeField] private Camera cursorCamera;
     [SerializeField] private float walkModifier;
     [SerializeField] private float sprintModifier;
@@ -15,11 +16,13 @@ public class Movement : MonoBehaviour
     [SerializeField] private float aimRoationSpeed;
     [SerializeField] Collider planeCollider;
     private Vector3 _input;
+    private float goUp;
     
     //--> TODO REFACTOR SCRIPT (but works for now)
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        playerTransform = GetComponent<Transform>();
     }
 
     void FixedUpdate()
@@ -38,6 +41,7 @@ public class Movement : MonoBehaviour
     //movement to be used with ortographic camera
     void movePlayerSkewed() {
         if(_input != Vector3.zero) {
+            //ortho camera coordinates tranformation
             var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
 
             var skewedInput = matrix.MultiplyPoint3x4(_input);
@@ -49,7 +53,6 @@ public class Movement : MonoBehaviour
                 Quaternion toRotation = Quaternion.LookRotation(skewedInput, Vector3.up);
 
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-
             }
             //if the player is aiming don't rotate because the player model is already rotating twoards mouse
             else if (Input.GetMouseButton(1)) {
@@ -71,10 +74,27 @@ public class Movement : MonoBehaviour
         Ray ray = cursorCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit)) {
-            if(hit.collider == planeCollider) {
+            //Debug.DrawRay(new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z), new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.position);
+            var hitObject = hit.transform.gameObject.GetComponent<Collider>();
+            if(hit.collider == hitObject) {
                 Quaternion toRotation = Quaternion.LookRotation(new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.position);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
             }
         }
+    }
+
+    private void OnCollisionStay(Collision other) {
+        var yAxis = transform.position.y;
+        if(other.transform.gameObject.tag != "floor" && Input.anyKey) {
+            Debug.Log("whatamaidoing");
+            timer();
+            transform.Translate(0, 0.5f, 0); 
+        }
+        if(this.transform.position.y < yAxis) 
+            return;
+    }
+
+    IEnumerator timer() {
+        yield return new WaitForSeconds(1f);
     }
 }

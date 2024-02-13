@@ -44,10 +44,23 @@ public class InventorySistem
         return false;
     }
 
-    public bool ContainsItem(InventoryItemData itemToAdd, out List<InventorySlot> invSlot){
-        invSlot = InventorySlots.Where(i => i.ItemData == itemToAdd).ToList();
+    //tav changes have been made here!
+    public bool RemoveFromInventory(InventoryItemData itemToRemove, int amountToRemove) {
+        if(ContainsItem(itemToRemove, out List<InventorySlot> invSlot)) {
+            foreach(var slot in invSlot) {
+                slot.RemoveFromStack(amountToRemove);
+                OnInventorySlotChanged?.Invoke(slot);
+                break;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public bool ContainsItem(InventoryItemData item, out List<InventorySlot> invSlot){
+        invSlot = InventorySlots.Where(i => i.ItemData == item).ToList();
         Debug.Log(invSlot.Count);
-        return invSlot == null ? false : true;
+        return invSlot.Any() ? true : false;
     }
 
     public bool HasFreeSlot(out InventorySlot freeSlot){

@@ -35,4 +35,19 @@ public class PlayerInventoryHolder : InventoryHolder
         }
         return false;
     }
+    
+    //tav made changes here
+    public bool RemoveFromInventory(InventoryItemData data, int amount) {
+        if(backpackInventorySistem.RemoveFromInventory(data, amount)) {
+            return true;
+        }
+        return false;
+    }
+
+    public bool CheckIfItemExists(InventoryItemData data) {
+        //ContainsItem returneaza fals daca nu se gaseste item-ul 
+        if(backpackInventorySistem.ContainsItem(data, out List<InventorySlot> invSlot)) 
+            return true;
+        return false;
+    }
 }

@@ -47,6 +47,7 @@ public class InventorySlot
         return RoomLeftInStack(amountToAdd);
     }
 
+
     public bool RoomLeftInStack(int amountToAdd){ // Doesnt stack more than the MaxStackSize
         if(stackSize + amountToAdd <= itemData.MaxStackSize)
             return true;

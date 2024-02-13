@@ -10,6 +10,10 @@ public class ItemPickUp : MonoBehaviour
 
     private SphereCollider myCollider;
 
+    private void update() {
+        
+    }
+
 
     private void Awake() {
         myCollider = GetComponent<SphereCollider>();

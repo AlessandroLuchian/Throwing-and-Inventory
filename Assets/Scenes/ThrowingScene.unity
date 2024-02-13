@@ -8614,9 +8614,21 @@ PrefabInstance:
       propertyPath: slowWalkModifier
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5864760905894630735, guid: c439f668c75cc834b9e66e0ae9e93c46, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864760905894630735, guid: c439f668c75cc834b9e66e0ae9e93c46, type: 3}
+      propertyPath: bulletData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c4f54fefc3806140ac981677ac9e7fa, type: 2}
     - target: {fileID: 6045887233942331564, guid: c439f668c75cc834b9e66e0ae9e93c46, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792869679686555944, guid: c439f668c75cc834b9e66e0ae9e93c46, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8258879207262504821, guid: c439f668c75cc834b9e66e0ae9e93c46, type: 3}
       propertyPath: m_LocalPosition.x
