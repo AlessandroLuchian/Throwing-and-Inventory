@@ -35,7 +35,7 @@ public class PlayerInventoryHolder : InventoryHolder
         }
         return false;
     }
-    
+
     //tav made changes here
     public bool RemoveFromInventory(InventoryItemData data, int amount) {
         if(backpackInventorySistem.RemoveFromInventory(data, amount)) {

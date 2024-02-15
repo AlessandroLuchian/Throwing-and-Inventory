@@ -7,6 +7,8 @@ public class Interactor : MonoBehaviour
 {
     public Transform InteractionPoint;
     public LayerMask InteractionLayer;
+
+    public PlayerInventoryHolder OpenChestAndBackpack;
     public float InteractionPointRadius = 1f;
     public bool isInteracting { get; private set; }
 

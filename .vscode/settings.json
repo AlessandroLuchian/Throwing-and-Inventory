@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "luchian.sln"
+    "dotnet.defaultSolution": "Throwing-and-Inventory.sln"
 }

@@ -15,6 +15,7 @@ public class InventorySistem
     public int InventorySize => InventorySlots.Count;
 
     public UnityAction<InventorySlot> OnInventorySlotChanged;
+    internal object gameObject;
 
     public InventorySistem(int size){
         inventorySlots = new List<InventorySlot>(size);
@@ -96,4 +97,5 @@ public class InventorySistem
         freeSlot = InventorySlots.FirstOrDefault(i => i.ItemData == null);
         return freeSlot == null ? false : true;
     }
+    
 }
