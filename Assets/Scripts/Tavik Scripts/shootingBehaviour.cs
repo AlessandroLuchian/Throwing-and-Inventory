@@ -21,19 +21,41 @@ public class shootingBehaviour : MonoBehaviour
     }
 
     void Update() {
+        //TODO --> refactor this if InventorySystem.CheckIfItemExists(bulletData) may be redundant
         //if player is aiming down sights and if he has a gun type item and has bullets in inventory then he can shoot based on the fire rate of the gun that he is holding
         if(Input.GetMouseButton(1) && Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire && InventorySystem.CheckIfItemExists(gunData) && InventorySystem.CheckIfItemExists(bulletData) && gunData.canShoot()) {
             nextTimeToFire = Time.time + 1f/gunData.fireRate;
             shoot();
-            InventorySystem.RemoveFromInventory(bulletData, 1);
+            //InventorySystem.RemoveFromInventory(bulletData, 1);
             gunData.decrementBulletsLoaded(1);
-            Debug.Log(gunData.currentAmountOfBulletsLoaded);
+            Debug.Log("arma are " + gunData.currentAmountOfBulletsLoaded  + " gloante incarcate");
+            Debug.Log("sunt in total " + InventorySystem.calculateNumberOfItems(bulletData) + " gloante");
             if(!audioSource.isPlaying)
                 audioSource.Play();
         }
 
         if(Input.GetKeyDown(KeyCode.R)) {
 
+
+            if(gunData.currentAmountOfBulletsLoaded == gunData.magazineSize)
+                return;
+            else {
+                //calculateNumberOfItems returneaza numarul de iteme din PRIMUL SLOT IN CARE GASESTE ITEM!!
+                if(InventorySystem.calculateNumberOfItems(bulletData)>0){
+                    
+                    //daca am mai multe gloante in slot decat am nevoie ca sa incarc 
+                    if(gunData.magazineSize-gunData.currentAmountOfBulletsLoaded <= InventorySystem.calculateNumberOfItems(bulletData)) {
+                        Debug.Log("gloante de incarcat: " + (gunData.magazineSize-gunData.currentAmountOfBulletsLoaded));
+                        int bulletsToLoad = gunData.magazineSize-gunData.currentAmountOfBulletsLoaded;
+                        //gloante de incarcat = gloante incarcator - gloante incarcate
+                        gunData.currentAmountOfBulletsLoaded += bulletsToLoad;
+                        //gloante de scos din inventar = gloante de incarcat
+                        InventorySystem.RemoveFromInventory(bulletData, bulletsToLoad);
+                    }
+                }
+
+            }
+     
         }
 
         if(Input.GetMouseButton(1)) {

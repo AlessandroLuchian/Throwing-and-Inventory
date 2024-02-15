@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -57,6 +58,20 @@ public class InventorySistem
         return false;
     }
 
+    //tav changes have been made here!
+    public int calculateNumberOfItemsPerSlot(InventoryItemData itemData) {
+        int totalNumberOfItem=0;
+        if(ContainsItem(itemData, out List<InventorySlot> invSlot)) {
+            foreach(var slot in invSlot) {
+                //if-ul asta e temporar. Inca nu am rezolvat chestia cu iteme negative asa ca pur si simplu le sar
+                if(slot.getAmount()>0) {
+                    totalNumberOfItem+=slot.getAmount();
+                    break;
+                }
+            }
+        }
+        return totalNumberOfItem;
+    }
     public bool ContainsItem(InventoryItemData item, out List<InventorySlot> invSlot){
         invSlot = InventorySlots.Where(i => i.ItemData == item).ToList();
         Debug.Log(invSlot.Count);

@@ -50,4 +50,9 @@ public class PlayerInventoryHolder : InventoryHolder
             return true;
         return false;
     }
+
+    public int calculateNumberOfItems(InventoryItemData data) {
+        return backpackInventorySistem.calculateNumberOfItemsPerSlot(data);
+
+    }
 }

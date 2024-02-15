@@ -75,4 +75,8 @@ public class InventorySlot
         return true;
     }
 
+    public int getAmount() {
+        return this.stackSize;
+    }
+
 }

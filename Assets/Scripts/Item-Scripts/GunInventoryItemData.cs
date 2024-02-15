@@ -9,6 +9,9 @@ public class GunInventoryItemData : InventoryItemData {
     public int magazineSize;
     public float timeToReload;
     public float fireRate;
+    //TODO --> deretardifica asta
+    //!!!UNITY E FOARTE RETARDAT SI NU RESETEAZA LA 7 FIELDUL ASTA DE MAI JOS CAND DAI PLAY DIN NOU LA SCENA. 
+    //DACA NU MAI TRAGE ARMA DE AICI E PROBLEMA!!! 
     public int currentAmountOfBulletsLoaded = 7;
 
     public void decrementBulletsLoaded(int amountOfBulletsToDecrement) {
