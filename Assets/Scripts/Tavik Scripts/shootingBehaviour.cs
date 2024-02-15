@@ -35,31 +35,7 @@ public class shootingBehaviour : MonoBehaviour
         }
 
         if(Input.GetKeyDown(KeyCode.R)) {
-            if(gunData.currentAmountOfBulletsLoaded == gunData.magazineSize)
-                return;
-            else {
-                //calculateNumberOfItems returneaza numarul de iteme din PRIMUL SLOT IN CARE GASESTE ITEM!!
-                if(InventorySystem.calculateNumberOfItems(bulletData)>0){
-                    //daca am mai multe gloante in slot decat am nevoie ca sa incarc 
-                    if(gunData.magazineSize-gunData.currentAmountOfBulletsLoaded <= InventorySystem.calculateNumberOfItems(bulletData)) {
-                        Debug.Log("gloante de incarcat: " + (gunData.magazineSize-gunData.currentAmountOfBulletsLoaded));
-                        int bulletsToLoad = gunData.magazineSize-gunData.currentAmountOfBulletsLoaded;
-                        //gloante de incarcat = gloante incarcator - gloante incarcate
-                        gunData.currentAmountOfBulletsLoaded += bulletsToLoad;
-                        //gloante de scos din inventar = gloante de incarcat
-                        InventorySystem.RemoveFromInventory(bulletData, bulletsToLoad);
-                    }
-                    else if (InventorySystem.calculateNumberOfItems(bulletData) < gunData.magazineSize-gunData.currentAmountOfBulletsLoaded) {
-                        Debug.Log("AM AJUNS AICI");
-                        int bulletsToLoad = InventorySystem.calculateNumberOfItems(bulletData);
-                        gunData.currentAmountOfBulletsLoaded += bulletsToLoad;
-                        InventorySystem.RemoveFromInventory(bulletData, bulletsToLoad);
-                        InventorySystem.deleteNegativeItems(bulletData);
-                    }
-                }
-               
-            }
-     
+            StartCoroutine(calculateHowToReload());
         }
 
         if(Input.GetMouseButton(1)) {
@@ -67,6 +43,35 @@ public class shootingBehaviour : MonoBehaviour
         }
         else
             laser.SetActive(false);
+    }
+
+    //hack --> will cause bad performance and crashes unity
+    //TODO --> pls fix
+    IEnumerator calculateHowToReload() {
+        while(InventorySystem.CheckIfItemExists(bulletData) || gunData.currentAmountOfBulletsLoaded!=gunData.magazineSize) {
+            if(gunData.magazineSize-gunData.currentAmountOfBulletsLoaded <= InventorySystem.calculateNumberOfItems(bulletData)) {
+                Debug.Log("gloante de incarcat: " + (gunData.magazineSize-gunData.currentAmountOfBulletsLoaded));
+                int bulletsToLoad = gunData.magazineSize-gunData.currentAmountOfBulletsLoaded;
+                //gloante de incarcat = gloante incarcator - gloante incarcate
+                gunData.currentAmountOfBulletsLoaded += bulletsToLoad;
+                //gloante de scos din inventar = gloante de incarcat
+                InventorySystem.RemoveFromInventory(bulletData, bulletsToLoad);
+                InventorySystem.deleteNegativeItems(bulletData);
+                yield return null;
+            }
+            else if (gunData.magazineSize-gunData.currentAmountOfBulletsLoaded >= InventorySystem.calculateNumberOfItems(bulletData) && InventorySystem.calculateNumberOfItems(bulletData)>0){
+                Debug.Log("AM AJUNS AICI");
+                int bulletsToLoad = InventorySystem.calculateNumberOfItems(bulletData);
+                gunData.currentAmountOfBulletsLoaded += bulletsToLoad;
+                InventorySystem.RemoveFromInventory(bulletData, bulletsToLoad);
+                InventorySystem.deleteNegativeItems(bulletData);
+                yield return null;
+            }
+            //wtf????? DO NOT REMOVE IT WILL CRASH
+            //IDK WHY IT WORKS
+            else 
+                break;
+        }
     }
 
     void shoot() {
