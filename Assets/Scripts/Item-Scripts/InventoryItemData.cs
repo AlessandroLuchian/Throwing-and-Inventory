@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Inventory Sistem/Inventory Item")]
+[CreateAssetMenu(menuName = "Inventory Sistem/Basic Inventory Item")]
 public class InventoryItemData : ScriptableObject
 {
     public int ID;
@@ -12,3 +12,6 @@ public class InventoryItemData : ScriptableObject
     public Sprite Icon;
     public int MaxStackSize;
 }
+
+
+

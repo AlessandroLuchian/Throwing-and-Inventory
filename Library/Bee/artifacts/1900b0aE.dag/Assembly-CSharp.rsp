@@ -365,6 +365,7 @@
 "Assets/Scripts/Inventory-Scripts/InventorySlot.cs"
 "Assets/Scripts/Inventory-Scripts/MouseItemData.cs"
 "Assets/Scripts/Inventory-Scripts/PlayerInventoryHolder.cs"
+"Assets/Scripts/Item-Scripts/GunInventoryItemData.cs"
 "Assets/Scripts/Item-Scripts/InventoryItemData.cs"
 "Assets/Scripts/Item-Scripts/ItemPickUp.cs"
 "Assets/Scripts/Movement and Throwing/Movement.cs"

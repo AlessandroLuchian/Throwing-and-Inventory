@@ -7,12 +7,12 @@ public class shootingBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject laser;
     private AudioSource audioSource;
-    [SerializeField] private float fireRate = 15f;
-    [SerializeField] private float damage;
     private float nextTimeToFire = 0;
     PlayerInventoryHolder InventorySystem;
     [SerializeField]
     InventoryItemData bulletData;
+    [SerializeField]
+    GunInventoryItemData gunData;
 
     void Start()
     {
@@ -20,16 +20,22 @@ public class shootingBehaviour : MonoBehaviour
         InventorySystem = GetComponent<PlayerInventoryHolder>();
     }
 
-    // Update is called once per frame
     void Update() {
-        if(Input.GetMouseButton(1) && Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire && InventorySystem.CheckIfItemExists(bulletData)) {
-            Debug.Log(InventorySystem.CheckIfItemExists(bulletData));
-            nextTimeToFire = Time.time + 1f/fireRate;
+        //if player is aiming down sights and if he has a gun type item and has bullets in inventory then he can shoot based on the fire rate of the gun that he is holding
+        if(Input.GetMouseButton(1) && Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire && InventorySystem.CheckIfItemExists(gunData) && InventorySystem.CheckIfItemExists(bulletData) && gunData.canShoot()) {
+            nextTimeToFire = Time.time + 1f/gunData.fireRate;
             shoot();
             InventorySystem.RemoveFromInventory(bulletData, 1);
+            gunData.decrementBulletsLoaded(1);
+            Debug.Log(gunData.currentAmountOfBulletsLoaded);
             if(!audioSource.isPlaying)
                 audioSource.Play();
         }
+
+        if(Input.GetKeyDown(KeyCode.R)) {
+
+        }
+
         if(Input.GetMouseButton(1)) {
             laser.SetActive(true);
         }
@@ -46,7 +52,7 @@ public class shootingBehaviour : MonoBehaviour
 
             target currentTarget = hit.transform.GetComponent<target>();
             if(currentTarget!=null) {
-                currentTarget.takeDamage(damage);
+                currentTarget.takeDamage(gunData.damage);
             }
         }
     }

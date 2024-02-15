@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\UI Scripts\DynamicInventoryDisplay.cs" />
     <Compile Include="Assets\Scripts\Inventory-Scripts\InventorySlot.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IInteractable.cs" />
+    <Compile Include="Assets\Scripts\Item-Scripts\GunInventoryItemData.cs" />
     <Compile Include="Assets\Scripts\Tavik Scripts\shootingBehaviour.cs" />
     <Compile Include="Assets\Scripts\Interfaces\Interactor.cs" />
     <Compile Include="Assets\Scripts\Inventory-Scripts\PlayerInventoryHolder.cs" />
