@@ -43,6 +43,8 @@ public class DynamicInventoryDisplay : InventoryDisplay
         if(slotDictionary != null)
             slotDictionary.Clear();
     }
+
+    
     private void OnDisable() {
         if(inventorySistem != null)
             inventorySistem.OnInventorySlotChanged -= UpdateSlot;

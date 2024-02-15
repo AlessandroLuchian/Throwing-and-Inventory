@@ -53,6 +53,9 @@ public class PlayerInventoryHolder : InventoryHolder
 
     public int calculateNumberOfItems(InventoryItemData data) {
         return backpackInventorySistem.calculateNumberOfItemsPerSlot(data);
+    }
 
+    public void deleteNegativeItems(InventoryItemData data) {
+        backpackInventorySistem.deleteSlot(data);
     }
 }

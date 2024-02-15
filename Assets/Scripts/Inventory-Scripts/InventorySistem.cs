@@ -72,6 +72,20 @@ public class InventorySistem
         }
         return totalNumberOfItem;
     }
+
+    //TODO --> hack code, refactor
+    //tav changes made here!
+    //this is a hack, look to refactor;
+    public void deleteSlot(InventoryItemData itemData) {
+        if(ContainsItem(itemData, out List<InventorySlot> invSlot)) {
+            foreach(var slot in invSlot) {
+                //daca e mai mic ca 0 moare;
+                if(slot.getAmount()<=0) {
+                    slot.ClearSlot();
+                }
+            }
+        }
+    }
     public bool ContainsItem(InventoryItemData item, out List<InventorySlot> invSlot){
         invSlot = InventorySlots.Where(i => i.ItemData == item).ToList();
         Debug.Log(invSlot.Count);
