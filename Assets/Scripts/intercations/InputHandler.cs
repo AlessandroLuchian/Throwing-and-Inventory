@@ -13,6 +13,8 @@ public class InputHandler : MonoBehaviour
     private InventoryItemData bulletData;
     [SerializeField]
     private GunInventoryItemData gunData;
+    [SerializeField]
+    private HealingInventoryData healingInventoryData;
     private shootingBehaviour shootingBehaviour;
 
 
@@ -31,7 +33,7 @@ public class InputHandler : MonoBehaviour
             //InventorySystem.RemoveFromInventory(bulletData, 1);
             gunData.decrementBulletsLoaded(1);
             Debug.Log("arma are " + gunData.currentAmountOfBulletsLoaded  + " gloante incarcate");
-            Debug.Log("sunt in total " + InventorySystem.calculateNumberOfItems(bulletData) + " gloante in primul slot valabil");
+            Debug.Log("sunt in total " + InventorySystem.calculateNumberOfItemsPerSlot(bulletData) + " gloante in primul slot valabil");
             if(!audioSource.isPlaying)
                 audioSource.Play();
         }
@@ -53,7 +55,7 @@ public class InputHandler : MonoBehaviour
 
      IEnumerator calculateHowToReload() {
         while(InventorySystem.CheckIfItemExists(bulletData) || gunData.currentAmountOfBulletsLoaded!=gunData.magazineSize) {
-            if(gunData.magazineSize-gunData.currentAmountOfBulletsLoaded <= InventorySystem.calculateNumberOfItems(bulletData)) {
+            if(gunData.magazineSize-gunData.currentAmountOfBulletsLoaded <= InventorySystem.calculateNumberOfItemsPerSlot(bulletData)) {
                 Debug.Log("gloante de incarcat: " + (gunData.magazineSize-gunData.currentAmountOfBulletsLoaded));
                 int bulletsToLoad = gunData.magazineSize-gunData.currentAmountOfBulletsLoaded;
                 //gloante de incarcat = gloante incarcator - gloante incarcate
@@ -63,9 +65,9 @@ public class InputHandler : MonoBehaviour
                 InventorySystem.deleteNegativeItems(bulletData);
                 yield return null;
             }
-            else if (gunData.magazineSize-gunData.currentAmountOfBulletsLoaded >= InventorySystem.calculateNumberOfItems(bulletData) && InventorySystem.calculateNumberOfItems(bulletData)>0){
+            else if (gunData.magazineSize-gunData.currentAmountOfBulletsLoaded >= InventorySystem.calculateNumberOfItemsPerSlot(bulletData) && InventorySystem.calculateNumberOfItemsPerSlot(bulletData)>0){
                 Debug.Log("AM AJUNS AICI");
-                int bulletsToLoad = InventorySystem.calculateNumberOfItems(bulletData);
+                int bulletsToLoad = InventorySystem.calculateNumberOfItemsPerSlot(bulletData);
                 gunData.currentAmountOfBulletsLoaded += bulletsToLoad;
                 InventorySystem.RemoveFromInventory(bulletData, bulletsToLoad);
                 InventorySystem.deleteNegativeItems(bulletData);
@@ -79,6 +81,7 @@ public class InputHandler : MonoBehaviour
     }
 
     private void calculateHowToHeal() {
+        Debug.Log("nr of healing items in 1st slot found: " + InventorySystem.calculateNumberOfItemsPerSlot(healingInventoryData));
     }
 
 }

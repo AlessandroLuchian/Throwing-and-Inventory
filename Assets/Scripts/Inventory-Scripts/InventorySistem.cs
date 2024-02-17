@@ -88,7 +88,7 @@ public class InventorySistem
     }
     public bool ContainsItem(InventoryItemData item, out List<InventorySlot> invSlot){
         invSlot = InventorySlots.Where(i => i.ItemData == item).ToList();
-        Debug.Log(invSlot.Count);
+        Debug.Log("number of inventory slots with item found: " + invSlot.Count);
         return invSlot.Any() ? true : false;
     }
 

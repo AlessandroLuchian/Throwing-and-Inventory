@@ -13,6 +13,7 @@ public class PlayerInventoryHolder : InventoryHolder
     public InventorySistem BackpackInventorySistem => backpackInventorySistem;
 
     public static UnityAction<InventorySistem> OnPlayerBackpackDisplayRequested;
+    bool isInInventory = false;
 
     protected override void Awake()
     {
@@ -20,10 +21,18 @@ public class PlayerInventoryHolder : InventoryHolder
 
         backpackInventorySistem = new InventorySistem(backpackSize);
     }
-    void Update()
-    {
-        if(Keyboard.current.iKey.wasPressedThisFrame)
+    void Update() {
+        if(Keyboard.current.iKey.wasPressedThisFrame && isInInventory == true) {
+            Debug.Log("am returnat");
+            isInInventory = false;
+            return;
+        }
+        else if(Keyboard.current.iKey.wasPressedThisFrame) {
             OnPlayerBackpackDisplayRequested?.Invoke(backpackInventorySistem);
+            isInInventory = true;
+            Debug.Log("este in inventar: " + isInInventory);
+        }
+
     }
 
     public bool AddToInventory(InventoryItemData data, int amount){
@@ -51,7 +60,7 @@ public class PlayerInventoryHolder : InventoryHolder
         return false;
     }
 
-    public int calculateNumberOfItems(InventoryItemData data) {
+    public int calculateNumberOfItemsPerSlot(InventoryItemData data) {
         return backpackInventorySistem.calculateNumberOfItemsPerSlot(data);
     }
 

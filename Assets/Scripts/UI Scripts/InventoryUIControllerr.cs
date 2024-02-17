@@ -23,11 +23,13 @@ public class InventoryUIControllerr : MonoBehaviour
     }
     void Update()
     {
-        if (chestPanel.gameObject.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (chestPanel.gameObject.activeInHierarchy && Keyboard.current.iKey.wasPressedThisFrame)
             chestPanel.gameObject.SetActive(false);
 
-        if (PlayerBackpackPanel.gameObject.activeInHierarchy && Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (PlayerBackpackPanel.gameObject.activeInHierarchy && Keyboard.current.iKey.wasPressedThisFrame) {
             PlayerBackpackPanel.gameObject.SetActive(false);
+            Debug.Log("Am incercat sa inchid inventarul!");
+        }
     }
 
     void DisplayInventory(InventorySistem invToDisplay){
