@@ -24,6 +24,7 @@ public class PlayerInventoryHolder : InventoryHolder
     {
         if(Keyboard.current.iKey.wasPressedThisFrame)
             OnPlayerBackpackDisplayRequested?.Invoke(backpackInventorySistem);
+
     }
 
     public bool AddToInventory(InventoryItemData data, int amount){
