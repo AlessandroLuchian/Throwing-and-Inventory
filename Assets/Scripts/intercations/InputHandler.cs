@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//input handler-ul inca nu e responsabil de movement behaviour si deschisul si inchisul inventarului
 public class InputHandler : MonoBehaviour
 {
     [SerializeField] private GameObject laser;
@@ -51,7 +52,6 @@ public class InputHandler : MonoBehaviour
             calculateHowToHeal();
         }
 
-        
     }
 
 

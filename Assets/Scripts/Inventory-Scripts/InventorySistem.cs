@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -10,15 +11,12 @@ using UnityEngine.UIElements;
 public class InventorySistem
 {
     [SerializeField] private List<InventorySlot> inventorySlots;
-
     public List<InventorySlot> InventorySlots => inventorySlots;
     public int InventorySize => InventorySlots.Count;
-
     public UnityAction<InventorySlot> OnInventorySlotChanged;
 
     public InventorySistem(int size){
         inventorySlots = new List<InventorySlot>(size);
-
         for(int i = 0; i < size; i++){
             inventorySlots.Add(new InventorySlot());
         }
@@ -26,7 +24,7 @@ public class InventorySistem
 
     public bool AddToInventory(InventoryItemData itemToAdd, int amountToAdd){
 
-        if(ContainsItem(itemToAdd, out List<InventorySlot> invSlot)){ // Check whether item exists in inventory
+        if(ContainsItem(itemToAdd, out List<InventorySlot> invSlot)) { // Check whether item exists in inventory
             foreach (var slot in invSlot){
                 if(slot.RoomLeftInStack(amountToAdd)){
                     slot.AddToStack(amountToAdd);
@@ -62,10 +60,7 @@ public class InventorySistem
     public int calculateNumberOfItemsPerSlot(InventoryItemData itemData) {
         int totalNumberOfItem=0;
         if(ContainsItem(itemData, out List<InventorySlot> invSlot)) {
-            Debug.Log("am intrat in IF!!");
             foreach(var slot in invSlot) {
-                Debug.Log("slot: " + slot.ItemData);
-                //if-ul asta s-ar putea sa fie redundant. Check 
                 if(slot.getAmount()>0) {
                     totalNumberOfItem+=slot.getAmount();
                     break;

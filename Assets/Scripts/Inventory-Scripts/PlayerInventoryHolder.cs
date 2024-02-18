@@ -9,6 +9,8 @@ public class PlayerInventoryHolder : InventoryHolder
 
     [SerializeField] protected int backpackSize;
     [SerializeField] protected InventorySistem backpackInventorySistem;
+    [SerializeField] protected DynamicInventoryDisplay dynamicInventoryDisplay;
+    public DynamicInventoryDisplay DynamicInventoryDisplay => dynamicInventoryDisplay;
 
     public InventorySistem BackpackInventorySistem => backpackInventorySistem;
 
@@ -23,6 +25,7 @@ public class PlayerInventoryHolder : InventoryHolder
     }
     
     //uita-te pe InventoryUIcontroller ca sa vezi exact cum intractioneaza
+    //cu timpul incearca sa muti asta in InputHandler...
     void Update() {
         if(Keyboard.current.iKey.wasPressedThisFrame && isInInventory == true) {
             Debug.Log("am returnat");

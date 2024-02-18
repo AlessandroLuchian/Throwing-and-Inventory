@@ -41,7 +41,6 @@ public class playerMovement : MonoBehaviour
     //movement to be used with ortographic camera
     void movePlayerSkewed() {
         if(_input != Vector3.zero) {
-            //ortho camera coordinates tranformation
             var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
 
             var skewedInput = matrix.MultiplyPoint3x4(_input);
@@ -81,17 +80,6 @@ public class playerMovement : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
             }
         }
-    }
-
-    private void OnCollisionStay(Collision other) {
-        var yAxis = transform.position.y;
-        if(other.transform.gameObject.tag != "floor" && Input.anyKey) {
-            Debug.Log("whatamaidoing");
-            timer();
-            transform.Translate(0, 0.5f, 0); 
-        }
-        if(this.transform.position.y < yAxis) 
-            return;
     }
 
     IEnumerator timer() {

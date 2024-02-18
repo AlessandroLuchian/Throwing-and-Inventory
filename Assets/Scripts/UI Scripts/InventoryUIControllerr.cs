@@ -21,14 +21,13 @@ public class InventoryUIControllerr : MonoBehaviour
         InventoryHolder.OnDynamicInventoryDisplayRequested += DisplayInventory;
         PlayerInventoryHolder.OnPlayerBackpackDisplayRequested -= DisplayPlayerBackpack;
     }
-    void Update()
-    {
+    void Update() {
+        //if-ul asta s-ar putea sa fie redundant
         if (chestPanel.gameObject.activeInHierarchy && Keyboard.current.iKey.wasPressedThisFrame)
             chestPanel.gameObject.SetActive(false);
 
         if (PlayerBackpackPanel.gameObject.activeInHierarchy && Keyboard.current.iKey.wasPressedThisFrame) {
             PlayerBackpackPanel.gameObject.SetActive(false);
-            Debug.Log("Am incercat sa inchid inventarul!");
         }
     }
 
