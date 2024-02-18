@@ -2363,6 +2363,7 @@ MonoBehaviour:
   laser: {fileID: 1042651674}
   bulletData: {fileID: 11400000, guid: 0c4f54fefc3806140ac981677ac9e7fa, type: 2}
   gunData: {fileID: 11400000, guid: 894a0dbac2f1b1f4cab0f48ad020ca98, type: 2}
+  healingInventoryData: {fileID: 11400000, guid: b31a3817133127948bddac30f8653aa6, type: 2}
 --- !u!1 &857345367
 GameObject:
   m_ObjectHideFlags: 0

@@ -62,8 +62,10 @@ public class InventorySistem
     public int calculateNumberOfItemsPerSlot(InventoryItemData itemData) {
         int totalNumberOfItem=0;
         if(ContainsItem(itemData, out List<InventorySlot> invSlot)) {
+            Debug.Log("am intrat in IF!!");
             foreach(var slot in invSlot) {
-                //if-ul asta e temporar. Inca nu am rezolvat chestia cu iteme negative asa ca pur si simplu le sar
+                Debug.Log("slot: " + slot.ItemData);
+                //if-ul asta s-ar putea sa fie redundant. Check 
                 if(slot.getAmount()>0) {
                     totalNumberOfItem+=slot.getAmount();
                     break;
@@ -87,7 +89,7 @@ public class InventorySistem
         }
     }
     public bool ContainsItem(InventoryItemData item, out List<InventorySlot> invSlot){
-        invSlot = InventorySlots.Where(i => i.ItemData == item).ToList();
+        invSlot = inventorySlots.Where(i => i.ItemData == item).ToList();
         Debug.Log("number of inventory slots with item found: " + invSlot.Count);
         return invSlot.Any() ? true : false;
     }

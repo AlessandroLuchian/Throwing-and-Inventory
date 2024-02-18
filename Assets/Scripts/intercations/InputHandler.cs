@@ -50,10 +50,13 @@ public class InputHandler : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.H)) {
             calculateHowToHeal();
         }
+
+        
     }
 
 
-     IEnumerator calculateHowToReload() {
+    IEnumerator calculateHowToReload() {
+        //TRY NEGARE IF-URI
         while(InventorySystem.CheckIfItemExists(bulletData) || gunData.currentAmountOfBulletsLoaded!=gunData.magazineSize) {
             if(gunData.magazineSize-gunData.currentAmountOfBulletsLoaded <= InventorySystem.calculateNumberOfItemsPerSlot(bulletData)) {
                 Debug.Log("gloante de incarcat: " + (gunData.magazineSize-gunData.currentAmountOfBulletsLoaded));
@@ -82,6 +85,10 @@ public class InputHandler : MonoBehaviour
 
     private void calculateHowToHeal() {
         Debug.Log("nr of healing items in 1st slot found: " + InventorySystem.calculateNumberOfItemsPerSlot(healingInventoryData));
+        if(InventorySystem.calculateNumberOfItemsPerSlot(healingInventoryData)>0) {
+            InventorySystem.RemoveFromInventory(healingInventoryData, 1);
+            InventorySystem.deleteNegativeItems(healingInventoryData);
+        }
     }
 
 }

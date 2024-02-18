@@ -34,6 +34,7 @@ public class DynamicInventoryDisplay : InventoryDisplay
             uiSlot.UpdateUISlot();
         }
     }
+    
     private void ClearSlot(){
         foreach(var item in transform.Cast<Transform>()){
             // varianta mai buna este object pulling asta este doar un exemplu

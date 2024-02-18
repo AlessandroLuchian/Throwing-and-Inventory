@@ -21,6 +21,8 @@ public class PlayerInventoryHolder : InventoryHolder
 
         backpackInventorySistem = new InventorySistem(backpackSize);
     }
+    
+    //uita-te pe InventoryUIcontroller ca sa vezi exact cum intractioneaza
     void Update() {
         if(Keyboard.current.iKey.wasPressedThisFrame && isInInventory == true) {
             Debug.Log("am returnat");
@@ -54,7 +56,6 @@ public class PlayerInventoryHolder : InventoryHolder
     }
 
     public bool CheckIfItemExists(InventoryItemData data) {
-        //ContainsItem returneaza fals daca nu se gaseste item-ul 
         if(backpackInventorySistem.ContainsItem(data, out List<InventorySlot> invSlot)) 
             return true;
         return false;
