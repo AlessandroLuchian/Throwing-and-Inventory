@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityData : MonoBehaviour
+[CreateAssetMenu(menuName = "Entities/Basic Entity")]
+public class EntityData : ScriptableObject
 {
     [SerializeField] public float maxHP;
     [SerializeField] public float currentHP=100;

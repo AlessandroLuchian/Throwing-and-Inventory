@@ -5,16 +5,13 @@ using UnityEngine;
 
 public class PlayerInteractor : MonoBehaviour
 {
-
-    private PlayerData playerData;
-    private shootingBehaviour shootingBehaviour;
+    [SerializeField] private PlayerData playerData;
     private GameObject playerObj;
     
 
 
     void Start() {
-        this.playerData = GetComponent<PlayerData>();
-        this.shootingBehaviour = GetComponent<shootingBehaviour>();
+        this.playerObj = GetComponent<GameObject>();
     }
 
     void Update() {
@@ -36,7 +33,8 @@ public class PlayerInteractor : MonoBehaviour
     void updateColorBasedOnHp() {
         Debug.Log(this.playerObj);
         Debug.Log(this.playerData);
-        if(this.playerData.currentHP<=100 && this.playerData.currentHP>=75){
+        if(this.playerData.currentHP<=100 && this.playerData.currentHP>=75) {
+
         }
         else if(this.playerData.currentHP<=74 && this.playerData.currentHP>=40) {
 
