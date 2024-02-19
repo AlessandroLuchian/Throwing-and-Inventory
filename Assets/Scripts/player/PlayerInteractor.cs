@@ -8,10 +8,9 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private PlayerData playerData;
     private GameObject playerObj;
     
-
-
     void Start() {
-        this.playerObj = GetComponent<GameObject>();
+        //do note --> la game objects nu se foloseste getComponent<>
+        this.playerObj = gameObject;
     }
 
     void Update() {
@@ -34,13 +33,14 @@ public class PlayerInteractor : MonoBehaviour
         Debug.Log(this.playerObj);
         Debug.Log(this.playerData);
         if(this.playerData.currentHP<=100 && this.playerData.currentHP>=75) {
-
+            gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
         }
         else if(this.playerData.currentHP<=74 && this.playerData.currentHP>=40) {
+            gameObject.GetComponent<MeshRenderer>().material.color = Color.magenta;
 
         }
         else if(this.playerData.currentHP<=39 && this.playerData.currentHP>0) {
-
+            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
         }
     }
 }
