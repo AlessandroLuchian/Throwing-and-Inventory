@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   currentHP: 100
-  walkModifier: 0
-  rotationSpeed: 0
-  isAlive: 0
-  sprintModifier: 0
-  aimRoationSpeed: 0
-  slowWalkModifier: 0
+  walkModifier: 3.3
+  rotationSpeed: 330
+  isAlive: 1
+  sprintModifier: 5.3
+  aimRoationSpeed: 305
+  slowWalkModifier: 1.8

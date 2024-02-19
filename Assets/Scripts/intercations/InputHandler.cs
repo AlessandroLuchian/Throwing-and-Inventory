@@ -17,17 +17,18 @@ public class InputHandler : MonoBehaviour
     [SerializeField]
     private HealingInventoryData healingInventoryData;
     private shootingBehaviour shootingBehaviour;
+    private Vector3 _input;
 
 
-    void Start() {
+    private void Start() {
         this.InventorySystem = GetComponent<PlayerInventoryHolder>();
         this.shootingBehaviour = GetComponent<shootingBehaviour>();
         this.audioSource = GetComponent<AudioSource>();
     }
 
-    void Update() {
-         //TODO --> refactor this if InventorySystem.CheckIfItemExists(bulletData) may be redundant
-        //if player is aiming down sights and if he has a gun type item and has bullets in inventory then he can shoot based on the fire rate of the gun that he is holding
+    private void Update() {
+        _input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
         if(Input.GetMouseButton(1) && Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire && InventorySystem.CheckIfItemExists(gunData) && gunData.canShoot()) {
             nextTimeToFire = Time.time + 1f/gunData.fireRate;
             shootingBehaviour.shoot(gunData);
@@ -55,7 +56,7 @@ public class InputHandler : MonoBehaviour
     }
 
 
-    IEnumerator calculateHowToReload() {
+    private IEnumerator calculateHowToReload() {
         //TRY NEGARE IF-URI
         while(InventorySystem.CheckIfItemExists(bulletData) || gunData.currentAmountOfBulletsLoaded!=gunData.magazineSize) {
             if(gunData.magazineSize-gunData.currentAmountOfBulletsLoaded <= InventorySystem.calculateNumberOfItemsPerSlot(bulletData)) {
@@ -91,4 +92,7 @@ public class InputHandler : MonoBehaviour
         }
     }
 
+    public Vector3 getMovementInput() {
+        return this._input;
+    }
 }

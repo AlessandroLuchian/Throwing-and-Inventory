@@ -7,22 +7,17 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     private Rigidbody rb; 
-    private Transform playerTransform;
     [SerializeField] private Camera cursorCamera;
-    [SerializeField] private float walkModifier;
-    [SerializeField] private float sprintModifier;
-    [SerializeField] private float slowWalkModifier;
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private float aimRoationSpeed;
     [SerializeField] Collider planeCollider;
-    private Vector3 _input;
-    private float goUp;
+    private Vector3 movementInput;
+    private InputHandler inputHandler;
+    [SerializeField] private PlayerData playerData;
     
     //--> TODO REFACTOR SCRIPT (but works for now)
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        playerTransform = GetComponent<Transform>();
+        this.inputHandler = GetComponent<InputHandler>();
     }
 
     void FixedUpdate()
@@ -35,35 +30,36 @@ public class playerMovement : MonoBehaviour
     }
 
     void gatherInput() {
-        _input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        movementInput = inputHandler.getMovementInput();
     }
 
-    //movement to be used with ortographic camera
+    //look to make this script more undestandable
+    //state machine?
     void movePlayerSkewed() {
-        if(_input != Vector3.zero) {
+        if(movementInput != Vector3.zero) {
             var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
 
-            var skewedInput = matrix.MultiplyPoint3x4(_input);
+            var skewedInput = matrix.MultiplyPoint3x4(movementInput);
 
             //if the player is not aiming and is not sprinting
             if(!Input.GetMouseButton(1) && !Input.GetKey(KeyCode.LeftShift)) {
-                rb.MovePosition(transform.position + skewedInput.normalized  * walkModifier * Time.deltaTime);
+                rb.MovePosition(transform.position + skewedInput.normalized  * playerData.walkModifier * Time.deltaTime);
                 //rotate twoards the position that the player is facing
                 Quaternion toRotation = Quaternion.LookRotation(skewedInput, Vector3.up);
 
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, playerData.rotationSpeed * Time.deltaTime);
             }
             //if the player is aiming don't rotate because the player model is already rotating twoards mouse
             else if (Input.GetMouseButton(1)) {
-                rb.MovePosition(transform.position + skewedInput.normalized  * slowWalkModifier * Time.deltaTime);
+                rb.MovePosition(transform.position + skewedInput.normalized  * playerData.slowWalkModifier * Time.deltaTime);
             }
             //if the player is sprinting 
             else {
-                rb.MovePosition(transform.position + skewedInput.normalized  * sprintModifier * Time.deltaTime);
+                rb.MovePosition(transform.position + skewedInput.normalized  * playerData.sprintModifier * Time.deltaTime);
                 //rotate twoards the position that the player is facing
                  Quaternion toRotation = Quaternion.LookRotation(skewedInput, Vector3.up);
 
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, playerData.rotationSpeed * Time.deltaTime);
             }
         }
     }
@@ -77,12 +73,9 @@ public class playerMovement : MonoBehaviour
             var hitObject = hit.transform.gameObject.GetComponent<Collider>();
             if(hit.collider == hitObject) {
                 Quaternion toRotation = Quaternion.LookRotation(new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.position);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, playerData.aimRoationSpeed * Time.deltaTime);
             }
         }
     }
 
-    IEnumerator timer() {
-        yield return new WaitForSeconds(1f);
-    }
 }
