@@ -6,7 +6,7 @@ using TMPro;
 [RequireComponent(typeof(SphereCollider))]
 public class ItemPickUp : MonoBehaviour
 {
-    public float PickUpRadius = 1f;
+    public float PickUpRadius = 2f;
     public GameObject pickupIconPrefab;
     public InventoryItemData ItemData;
     private SphereCollider myCollider;
@@ -25,7 +25,7 @@ public class ItemPickUp : MonoBehaviour
     private void OnTriggerStay(Collider other) {
             PressF.SetActive(true);
             Outline.SetActive(true);
-        if(Input.GetKeyDown(KeyCode.F)){
+        if(Input.GetKey(KeyCode.F)){
             var inventory = other.transform.GetComponent<PlayerInventoryHolder>();
             
             if(!inventory)

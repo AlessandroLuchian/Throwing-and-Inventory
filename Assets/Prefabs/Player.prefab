@@ -14,13 +14,14 @@ GameObject:
   - component: {fileID: 7223540091010476945}
   - component: {fileID: 7049594348482600884}
   - component: {fileID: 4184341660755002402}
-  - component: {fileID: 5199265712018323412}
   - component: {fileID: 5864760905894630735}
   - component: {fileID: 7792869679686555944}
   - component: {fileID: 2416990529450328455}
+  - component: {fileID: 561902059897404135}
+  - component: {fileID: 1616135836548280678}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,13 +154,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorCamera: {fileID: 0}
-  walkModifier: 2
+  walkModifier: 5
   sprintModifier: 2.6
-  slowWalkModifier: 0.8
-  rotationSpeed: 190
+  slowWalkModifier: 2
+  rotationSpeed: 360
   aimRoationSpeed: 3
   planeCollider: {fileID: 0}
---- !u!114 &5199265712018323412
+--- !u!114 &5864760905894630735
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,27 +169,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6045887233942331564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cee10c46035dc6d4ca95b9a5cfccc161, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventorySize: 10
-  inventorySistem:
-    inventorySlots: []
---- !u!114 &5864760905894630735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6045887233942331564}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 111a12cda7654fb4f8cb5ba540737127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 8004287617767755197}
-  fireRate: 15
-  damage: 2.5
+  bulletData: {fileID: 11400000, guid: 0c4f54fefc3806140ac981677ac9e7fa, type: 2}
+  gunData: {fileID: 11400000, guid: 894a0dbac2f1b1f4cab0f48ad020ca98, type: 2}
 --- !u!82 &7792869679686555944
 AudioSource:
   m_ObjectHideFlags: 0
@@ -196,7 +182,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6045887233942331564}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 77fa1d84818ac7443aebfebfea3b9193, type: 3}
@@ -297,11 +283,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8352b8369cdd2a248b33df247e953e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractionPoint: {fileID: 0}
+  InteractionPoint: {fileID: 2051920235776480690}
   InteractionLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
+  OpenChestAndBackpack: {fileID: 0}
   InteractionPointRadius: 1
+--- !u!114 &561902059897404135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045887233942331564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 473e0153f321d294ab4b6f76aeb973d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySize: 0
+  primaryInventorySistem:
+    inventorySlots: []
+  backpackSize: 30
+  backpackInventorySistem:
+    inventorySlots: []
+--- !u!135 &1616135836548280678
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045887233942331564}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8004287617767755197
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +489,7 @@ Transform:
   m_GameObject: {fileID: 8939070815520519456}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.87, y: -0.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
