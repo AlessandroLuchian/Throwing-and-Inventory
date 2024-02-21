@@ -7,9 +7,9 @@ using UnityEngine.Events;
 public class PlayerInventoryHolder : InventoryHolder
 {
 
-    [SerializeField] protected int backpackSize;
-    [SerializeField] protected InventorySistem backpackInventorySistem;
-    [SerializeField] protected DynamicInventoryDisplay dynamicInventoryDisplay;
+    [SerializeField] public int backpackSize;
+    [SerializeField] public InventorySistem backpackInventorySistem;
+    [SerializeField] public DynamicInventoryDisplay dynamicInventoryDisplay;
     public DynamicInventoryDisplay DynamicInventoryDisplay => dynamicInventoryDisplay;
 
     public InventorySistem BackpackInventorySistem => backpackInventorySistem;

@@ -17,17 +17,20 @@ public class InputHandler : MonoBehaviour
     [SerializeField]
     private HealingInventoryData healingInventoryData;
     private shootingBehaviour shootingBehaviour;
-    private Vector3 _input;
+    private Vector3 movementInput;
+    private PlayerInventoryHolder playerInventoryHolder;
+    [SerializeField] private PlayerData playerData;
 
 
     private void Start() {
         this.InventorySystem = GetComponent<PlayerInventoryHolder>();
         this.shootingBehaviour = GetComponent<shootingBehaviour>();
         this.audioSource = GetComponent<AudioSource>();
+        this.playerInventoryHolder = GetComponent<PlayerInventoryHolder>();
     }
 
     private void Update() {
-        _input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        movementInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         if(Input.GetMouseButton(1) && Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire && InventorySystem.CheckIfItemExists(gunData) && gunData.canShoot()) {
             nextTimeToFire = Time.time + 1f/gunData.fireRate;
@@ -52,7 +55,6 @@ public class InputHandler : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.H)) {
             calculateHowToHeal();
         }
-
     }
 
 
@@ -87,12 +89,13 @@ public class InputHandler : MonoBehaviour
     private void calculateHowToHeal() {
         Debug.Log("nr of healing items in 1st slot found: " + InventorySystem.calculateNumberOfItemsPerSlot(healingInventoryData));
         if(InventorySystem.calculateNumberOfItemsPerSlot(healingInventoryData)>0) {
+            playerData.currentHP+=healingInventoryData.hpToHeal;
             InventorySystem.RemoveFromInventory(healingInventoryData, 1);
             InventorySystem.deleteNegativeItems(healingInventoryData);
         }
     }
 
     public Vector3 getMovementInput() {
-        return this._input;
+        return this.movementInput;
     }
 }

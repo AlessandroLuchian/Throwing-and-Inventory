@@ -2365,6 +2365,7 @@ MonoBehaviour:
   bulletData: {fileID: 11400000, guid: 0c4f54fefc3806140ac981677ac9e7fa, type: 2}
   gunData: {fileID: 11400000, guid: 894a0dbac2f1b1f4cab0f48ad020ca98, type: 2}
   healingInventoryData: {fileID: 11400000, guid: b31a3817133127948bddac30f8653aa6, type: 2}
+  playerData: {fileID: 11400000, guid: 069ede53efce83545a49855d688e474e, type: 2}
 --- !u!114 &815286742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2378,11 +2379,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorCamera: {fileID: 963194227}
-  walkModifier: 3
-  sprintModifier: 5
-  slowWalkModifier: 2
-  rotationSpeed: 458
-  aimRoationSpeed: 3
   planeCollider: {fileID: 412235575}
   playerData: {fileID: 11400000, guid: 069ede53efce83545a49855d688e474e, type: 2}
 --- !u!114 &815286751
