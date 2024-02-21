@@ -1218,6 +1218,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4365038658384041716, guid: a62fdd8af1cab59468880252f0fc165b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5467558937834859203, guid: a62fdd8af1cab59468880252f0fc165b, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -2379,7 +2383,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorCamera: {fileID: 963194227}
-  planeCollider: {fileID: 412235575}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
   playerData: {fileID: 11400000, guid: 069ede53efce83545a49855d688e474e, type: 2}
 --- !u!114 &815286751
 MonoBehaviour:
@@ -5411,6 +5417,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 6209236992199555184, guid: d880780b48a878443b0495488b33399b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209236992199555184, guid: d880780b48a878443b0495488b33399b, type: 3}
+      propertyPath: m_TagString
+      value: ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5592,6 +5606,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 5199265712018323412, guid: c439f668c75cc834b9e66e0ae9e93c46, type: 3}
+    - {fileID: 4184341660755002402, guid: c439f668c75cc834b9e66e0ae9e93c46, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

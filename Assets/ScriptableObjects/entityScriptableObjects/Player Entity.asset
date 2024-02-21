@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Player Entity
   m_EditorClassIdentifier: 
   maxHP: 100
-  currentHP: 91
+  currentHP: 100
   walkModifier: 3.3
   rotationSpeed: 330
   isAlive: 1
   sprintModifier: 5.3
-  aimRoationSpeed: 305
+  aimRoationSpeed: 300
   slowWalkModifier: 1.8

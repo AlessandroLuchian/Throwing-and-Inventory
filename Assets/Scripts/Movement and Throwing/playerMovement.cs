@@ -8,7 +8,7 @@ public class playerMovement : MonoBehaviour
 {
     private Rigidbody rb; 
     [SerializeField] private Camera cursorCamera;
-    [SerializeField] Collider planeCollider;
+    [SerializeField] private LayerMask layerMask;
     private Vector3 movementInput;
     private InputHandler inputHandler;
     [SerializeField] private PlayerData playerData;
@@ -68,14 +68,14 @@ public class playerMovement : MonoBehaviour
         Vector3 mouseInput = Input.mousePosition;
         Ray ray = cursorCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit)) {
+        if(Physics.Raycast(ray, out hit, float.MaxValue, layerMask)) {
             //Debug.DrawRay(new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z), new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.position);
-            var hitObject = hit.transform.gameObject.GetComponent<Collider>();
-            if(hit.collider == hitObject) {
-                Quaternion toRotation = Quaternion.LookRotation(new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.position);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, playerData.aimRoationSpeed * Time.deltaTime);
-            }
+            var hitObject = hit.transform.gameObject.GetComponent<MeshRenderer>();
+            Debug.Log(hitObject);
+            Quaternion toRotation = Quaternion.LookRotation(new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.position);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, playerData.aimRoationSpeed * Time.deltaTime);
         }
     }
+
 
 }

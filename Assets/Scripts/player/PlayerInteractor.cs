@@ -42,5 +42,8 @@ public class PlayerInteractor : MonoBehaviour
         else if(this.playerData.currentHP<=39 && this.playerData.currentHP>0) {
             gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
         }
+        //add logic here that prevents you from healing at full hp
+        else if(this.playerData.currentHP>100)
+            this.playerData.currentHP = 100;
     }
 }
