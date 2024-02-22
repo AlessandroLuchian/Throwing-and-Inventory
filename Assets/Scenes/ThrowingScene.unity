@@ -2385,7 +2385,7 @@ MonoBehaviour:
   cursorCamera: {fileID: 963194227}
   layerMaskGround:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 1024
   layerMaskEnemy:
     serializedVersion: 2
     m_Bits: 2048

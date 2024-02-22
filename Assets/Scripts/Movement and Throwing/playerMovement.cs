@@ -25,8 +25,11 @@ public class playerMovement : MonoBehaviour
     {
         gatherInput();
         movePlayerSkewed();
-        if(Input.GetMouseButton(1)) {
-            //rotatePlayerToMouse();
+        if(Input.GetMouseButton(1) && !lookOntoTarget()) {
+            rotatePlayerToMouse();
+           
+        }
+        else {
             lookOntoTarget();
         }
     }
