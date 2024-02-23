@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(SphereCollider))]
 public class ItemPickUp : MonoBehaviour
@@ -10,17 +11,20 @@ public class ItemPickUp : MonoBehaviour
     public GameObject pickupIconPrefab;
     public InventoryItemData ItemData;
     private SphereCollider myCollider;
-    [SerializeField] public GameObject PressF;
-    [SerializeField] public GameObject Outline;
+    [SerializeField] public string Comp1;
+    [SerializeField] public string Comp2;
+    private GameObject PressF;
+    private GameObject Outline;
 
     private void Awake() {
         myCollider = GetComponent<SphereCollider>();
         myCollider.isTrigger = true;
         myCollider.radius = PickUpRadius;
-        PressF.SetActive(false);
+        Outline = this.gameObject.transform.Find(Comp1).gameObject;
+        PressF = this.gameObject.transform.Find(Comp2).gameObject;
         Outline.SetActive(false);
+        PressF.SetActive(false);
     }
-
 
     private void OnTriggerStay(Collider other) {
         PressF.SetActive(true);

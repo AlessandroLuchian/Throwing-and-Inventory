@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 8917255053290621252}
   - component: {fileID: 945039882404935679}
   - component: {fileID: 7046841837512828868}
-  - component: {fileID: 1916494427393311628}
   m_Layer: 7
   m_Name: Projectile
   m_TagString: Item
@@ -221,22 +220,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1916494427393311628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3617005924642951425}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e125fd38a87ec3742941e9a7518722dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _InitialVelocity: 5
-  _Angle: 45
-  _Line: {fileID: 6798597829156844502}
-  _Step: 0.1
-  _FirePoint: {fileID: 0}
-  maxFiringDistance: 8.5
-  circlePrefab: {fileID: 0}
