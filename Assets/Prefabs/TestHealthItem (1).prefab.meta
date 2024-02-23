@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/TestHealthItem (1).prefab.meta
+guid: ce373dd1acbf0bc4f867886913852cd9
+========
+guid: 6eab4530508290743ad9b413e1368a00
+>>>>>>>> origin/picking-up-items:Assets/Prefabs/F.prefab.meta
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
