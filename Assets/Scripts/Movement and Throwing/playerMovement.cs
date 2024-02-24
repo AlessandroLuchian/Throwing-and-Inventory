@@ -91,7 +91,10 @@ public class playerMovement : MonoBehaviour
                 Debug.Log("am intrat in coliziune cu inamicul");
                 var hitObject = hit.transform.gameObject.GetComponent<Collider>();
                 Debug.Log(hitObject);
-                Quaternion toRotation = Quaternion.LookRotation(hit.collider.bounds.center - new Vector3(0, hit.transform.position.y, 0) + new Vector3(0, this.transform.position.y, 0)- transform.position);
+                Quaternion toRotation = Quaternion.LookRotation(hit.collider.bounds.center - new Vector3(0, hit.transform.position.y, 0) + new Vector3(0, this.transform.position.y, 0) - transform.position);
+                //hit.collider.bounds.center --> coord centru colider
+                //0 hit.trans.pos.y --> scazi rotatia pe y
+                //
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, playerData.aimRoationSpeed * Time.deltaTime);
                 return true;
             }
