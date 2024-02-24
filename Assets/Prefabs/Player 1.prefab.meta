@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Player 1.prefab.meta
+guid: e542b130d0f4aad48b61abc837476faf
+========
+guid: 2f0792c788a4d9e41827cfc32a7d2be3
+>>>>>>>> origin/picking-up-items:Assets/Prefabs/Bullets.prefab.meta
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
