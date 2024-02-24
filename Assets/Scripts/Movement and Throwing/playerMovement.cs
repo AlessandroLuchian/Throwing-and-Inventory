@@ -83,16 +83,18 @@ public class playerMovement : MonoBehaviour
     }
 
      private bool lookOntoTarget () {
-        Vector3 mouseInput = Input.mousePosition;
-        Ray ray = cursorCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, float.MaxValue, layerMaskEnemy)) {
-            Debug.Log("am intrat in coliziune cu inamicul");
-            var hitObject = hit.transform.gameObject.GetComponent<Collider>();
-            Debug.Log(hitObject);
-            Quaternion toRotation = Quaternion.LookRotation(hit.collider.bounds.center - new Vector3(0, hit.transform.position.y, 0) + new Vector3(0, this.transform.position.y, 0)- transform.position);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, playerData.aimRoationSpeed * Time.deltaTime);
-            return true;
+        if(Input.GetMouseButton(1)) {
+            Vector3 mouseInput = Input.mousePosition;
+            Ray ray = cursorCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if(Physics.Raycast(ray, out hit, float.MaxValue, layerMaskEnemy)) {
+                Debug.Log("am intrat in coliziune cu inamicul");
+                var hitObject = hit.transform.gameObject.GetComponent<Collider>();
+                Debug.Log(hitObject);
+                Quaternion toRotation = Quaternion.LookRotation(hit.collider.bounds.center - new Vector3(0, hit.transform.position.y, 0) + new Vector3(0, this.transform.position.y, 0)- transform.position);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, playerData.aimRoationSpeed * Time.deltaTime);
+                return true;
+            }
         }
         return false;
     }
