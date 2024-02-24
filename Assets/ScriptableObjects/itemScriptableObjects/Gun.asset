@@ -21,6 +21,6 @@ MonoBehaviour:
   magazineSize: 7
   timeToReload: 3
   fireRate: 15
-  currentAmountOfBulletsLoaded: 1
-  muzzleFlash: {fileID: 2472769590879227010, guid: b8d173fe589052a4195b34d8eb3e275e, type: 3}
+  currentAmountOfBulletsLoaded: 2
+  muzzleFlash: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
   bulletTrail: {fileID: 328621789431213768, guid: 43559d27d223bf340b413fde1315c256, type: 3}
